@@ -1,0 +1,53 @@
+
+<div class="container">
+  <p>Add New Event</p>
+  <div class="row">
+    <div class="col-md-4">
+      <form (ngSubmit)="addEvent(f)" #f="ngForm" >
+        <div class="form-group">
+          <label for="">Title</label>
+          <input type="text" name="title" [(ngModel)]="cal.title" #title="ngModel" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Description</label>
+          <input type="text" name="description" [(ngModel)]="cal.description" #description="ngModel" class="form-control">
+        </div>
+        <div class="form-group">
+          <div class="row">
+              <div class="col-md-6">
+                  <label for="">Start Date</label>
+                  <input type="text" name="sDate" [(ngModel)]="cal.sDate" #sDate="ngModel" class="form-control">
+              </div>
+              <div class="col-md-6">
+                  <label for="">Start Time</label>
+                  <input type="text" name="sTime" [(ngModel)]="cal.sTime" #sTime="ngModel" class="form-control">
+              </div>
+          </div>
+          <div class="form-group">
+              <div class="row">
+                  <div class="col-md-6"><br>
+                      <label for="">End Date</label>
+                      <input type="text" name="eDate" [(ngModel)]="cal.eDate" #eDate="ngModel" class="form-control">
+                  </div>
+                  <div class="col-md-6"><br>
+                      <label for="">End Time</label>
+                      <input type="text" name="eTime" [(ngModel)]="cal.eTime" #eTime="ngModel" class="form-control">
+                  </div>
+              </div>
+        </div>
+        <div class="form-group">
+            <label for="">
+              <input type="checkbox" name="allDay" [(ngModel)]="cal.allDay" #allDay="ngModel" > All Day
+            </label>
+          </div>
+          <div class="form-group">
+              <input type="submit" value="Add" class="btn btn-primary pull-right">
+            </div>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="calendarOptions">
+    <ng-fullcalendar #ucCalendar [options]="calendarOptions" [(eventsModel)]="events"></ng-fullcalendar>
+  </div>
+</div>
